@@ -1,0 +1,2529 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Life Journey | Personal Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        :root {
+            --primary-color: #3b82f6;
+            --primary-light: #93c5fd;
+            --secondary-color: #2563eb;
+            --accent-color: #f59e0b;
+            --accent-dark: #e67e22;
+            --dark-color: #1e293b;
+            --darker-color: #0f172a;
+            --light-color: #f8fafc;
+            --lighter-color: #ffffff;
+            --gray-color: #94a3b8;
+            --light-gray: #e2e8f0;
+            --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+            --shadow-md: 0 4px 6px rgba(0,0,0,0.1), 0 1px 3px rgba(0,0,0,0.08);
+            --shadow-lg: 0 10px 25px rgba(0,0,0,0.1), 0 5px 10px rgba(0,0,0,0.05);
+            --shadow-xl: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        .container {
+            max-width: 1500px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 1rem 0;
+        }
+
+        /* Preloader */
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--lighter-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .preloader.fade-out {
+            opacity: 0;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid var(--light-gray);
+            border-top: 5px solid var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Header */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: var(--shadow-sm);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            transition: var(--transition);
+        }
+
+        header.scrolled {
+            box-shadow: var(--shadow-md);
+            padding: 0.5rem 0;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 0;
+            transition: var(--transition);
+        }
+
+        header.scrolled nav {
+            padding: 0.5rem 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo i {
+            font-size: 1.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--dark-color);
+            z-index: 1001;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(255, 255, 255, 0.9) 100%);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.08) 0%, transparent 70%);
+            z-index: -1;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero-text h1 span {
+            color: var(--primary-color);
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero-text h1 span::after {
+            content: '';
+            position: absolute;
+            bottom: 10px;
+            left: 0;
+            width: 100%;
+            height: 15px;
+            background-color: rgba(59, 130, 246, 0.3);
+            z-index: -1;
+            transform: skewY(-2deg);
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            color: var(--dark-color);
+            margin-bottom: 2.5rem;
+            max-width: 500px;
+            opacity: 0.9;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .btn:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn:active {
+            transform: translateY(1px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-accent {
+            background-color: var(--accent-color);
+            color: white;
+        }
+
+        .btn-accent:hover {
+            background-color: var(--accent-dark);
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .hero-image {
+            position: relative;
+            text-align: center;
+            perspective: 1000px;
+        }
+
+        .hero-image .img-container {
+            position: relative;
+            display: inline-block;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-xl);
+            transform-style: preserve-3d;
+            transform: rotateY(-5deg) rotateX(5deg);
+            transition: var(--transition);
+        }
+
+        .hero-image:hover .img-container {
+            transform: rotateY(0) rotateX(0);
+        }
+
+        .hero-image img {
+            width: 100%;
+            max-width: 400px;
+            display: block;
+            transition: var(--transition);
+        }
+
+        .hero-image .img-container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.2) 0%, transparent 100%);
+            z-index: 1;
+        }
+
+        .floating-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        .floating-element {
+            position: absolute;
+            background-color: var(--primary-light);
+            opacity: 0.6;
+            border-radius: 50%;
+            filter: blur(40px);
+            animation: float 15s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+            100% { transform: translateY(0) rotate(360deg); }
+        }
+
+        /* About Me Section */
+        .about {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, var(--primary-light) 0%, transparent 70%);
+            z-index: -1;
+            opacity: 0.3;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-color);
+            border-radius: 2px;
+        }
+
+        .section-title p {
+            color: var(--gray-color);
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+
+        .about-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 4rem;
+}
+
+.about-image {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: var(--shadow-xl);
+    transform: rotate(-2deg);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    max-height: 560px;
+    width: min(85%, 380px);
+    margin: 0 auto;
+    background: linear-gradient(145deg, #f0f0f0, #ffffff);
+}
+
+.about-image:hover {
+    transform: rotate(-1deg) scale(1.02);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
+
+.about-image video {
+    width: 100%;
+    height: auto;
+    min-height: 100%;
+    object-fit: cover;
+    aspect-ratio: 9/16;
+    display: block;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+}
+
+@media (max-width: 768px) {
+    .about-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .about-image {
+        width: min(90%, 320px);
+        margin-bottom: 2rem;
+        order: -1;
+    }
+}
+        .about-text h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--darker-color);
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            color: var(--dark-color);
+            opacity: 0.9;
+            text-align: justify;
+        }
+
+        .interests {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .interest {
+            background-color: var(--light-gray);
+            color: var(--dark-color);
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .interest:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .interest i {
+            font-size: 0.8rem;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1.5rem;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--gray-color);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background-color: var(--light-gray);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+            width: 100%;
+        }
+
+        .timeline-item:nth-child(odd) {
+            padding-right: calc(50% + 2rem);
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) {
+            padding-left: calc(50% + 2rem);
+            text-align: left;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            border: 4px solid white;
+            box-shadow: 0 0 0 2px var(--primary-color);
+        }
+
+        .timeline-content {
+            padding: 1.5rem;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .timeline-date {
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            background-color: var(--accent-color);
+            color: white;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .timeline-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--darker-color);
+        }
+
+        .timeline-desc {
+            color: var(--gray-color);
+            font-size: 0.95rem;
+        }
+
+        /* Family Section */
+        .family {
+            background-color: #f1f5f9;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .family::before {
+            content: '';
+            position: absolute;
+            bottom: -100px;
+            left: -100px;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, var(--primary-light) 0%, transparent 70%);
+            z-index: 0;
+            opacity: 0.3;
+        }
+
+        .family-members {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .member-card {
+            background-color: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+            text-align: center;
+            padding: 2.5rem 1.5rem;
+            position: relative;
+        }
+
+        .member-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+        }
+
+        .member-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .member-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto 1.5rem;
+    border: 3px solid var(--primary-color);
+    position: relative;
+    box-shadow: var(--shadow-sm);
+}
+
+.member-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    image-rendering: crisp-edges; /* helps browsers render the image more sharply */
+    transition: var(--transition);
+}
+
+        .member-info h3 {
+            margin-bottom: 0.5rem;
+            color: var(--darker-color);
+        }
+
+        .member-relation {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            background-color: rgba(59, 130, 246, 0.1);
+            border-radius: 50px;
+        }
+
+        .member-desc {
+            color: var(--gray-color);
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .member-social {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .member-social a {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background-color: var(--light-gray);
+            color: var(--dark-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .member-social a:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* Travels Section */
+        .travels {
+            position: relative;
+        }
+
+        .travel-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .travel-card {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            height: 300px;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+        }
+
+        .travel-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .travel-image {
+            width: 100%;
+            height: 100%;
+        }
+
+        .travel-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .travel-card:hover .travel-image img {
+            transform: scale(1.1);
+        }
+
+        .travel-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            color: white;
+            padding: 2rem;
+        }
+
+        .travel-info h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.5rem;
+        }
+
+        .travel-info p {
+            opacity: 0.9;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .travel-meta {
+            display: flex;
+            gap: 1rem;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .travel-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .travel-date {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background-color: rgba(230, 126, 34, 0.5); /* Adjust opacity here */
+            color:  white;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .travel-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.6rem 1.2rem;
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-decoration: none;
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .travel-btn:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        /* Memories Section */
+.memory-video {
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%; /* Maintained 16:9 aspect ratio */
+    position: relative;
+    overflow: hidden;
+    transition: box-shadow 0.3s ease; /* Added smooth transition */
+}
+
+.memory-video video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease; /* Added for hover effects */
+}
+
+.memory-video:hover {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
+}
+
+.memory-video:hover video {
+    transform: scale(1.02); /* Subtle zoom effect on hover */
+}
+
+/* Memories section enhancements */
+.memories {
+    padding: 30px 0;
+    background: #f9f9f9;
+    position: relative;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-title h2 {
+    font-size: 36px;
+    color: #333;
+    position: relative;
+    display: inline-block;
+}
+
+.section-title h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: #4CAF50;
+}
+
+.section-title p {
+    color: #777;
+    font-size: 18px;
+    max-width: 700px;
+    margin: 20px auto 0;
+    line-height: 1.6;
+}
+
+/* Slider enhancements */
+.memory-slider {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.memory-track {
+    display: flex;
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Smoother easing */
+    will-change: transform;
+}
+
+.memory-card {
+    flex: 0 0 100%;
+    max-width: 100%;
+    padding: 0 15px;
+    box-sizing: border-box;
+    transition: opacity 0.3s ease; /* Added for inactive cards */
+}
+
+.memory-info {
+    padding: 20px 10px;
+    text-align: center;
+    transition: transform 0.3s ease; /* Added for hover effects */
+}
+
+.memory-card:hover .memory-info {
+    transform: translateY(-5px); /* Lift effect on hover */
+}
+
+.memory-date {
+    color: #888;
+    font-size: 14px;
+    font-weight: 500; /* Slightly bolder */
+    letter-spacing: 0.5px; /* Improved readability */
+}
+
+.memory-title {
+    margin: 10px 0;
+    color: #333;
+    font-size: 24px;
+    transition: color 0.3s ease; /* Added hover transition */
+}
+
+.memory-card:hover .memory-title {
+    color: #4CAF50; /* Theme color on hover */
+}
+
+.memory-desc {
+    color: #666;
+    margin-bottom: 20px;
+    line-height: 1.6;
+    font-size: 15px; /* Slightly smaller for better proportions */
+    text-align: justify;
+}
+
+/* Button enhancements */
+.travel-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: all 0.3s ease; /* Enhanced transition */
+    border: 2px solid transparent; /* For hover effect */
+    font-weight: 600;
+}
+
+.travel-btn:hover {
+    background: transparent;
+    color: #4CAF50;
+    border-color: #4CAF50; /* Outline effect on hover */
+}
+
+/* Navigation enhancements */
+.slider-nav {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    margin-bottom: 10PX;
+}
+
+.slider-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #ccc;
+    margin: 0 5px;
+    cursor: pointer;
+    transition: all 0.3s ease; /* Enhanced transition */
+}
+
+.slider-dot:hover {
+    transform: scale(1.2); /* Slight grow on hover */
+}
+
+.slider-dot.active {
+    background: #4CAF50;
+    transform: scale(1.2); /* Matching hover scale */
+}
+
+/* Arrow navigation enhancements */
+.slider-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.9); /* More opaque */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15); /* Deeper shadow */
+    transition: all 0.3s ease;
+    opacity: 0.9; /* Slightly transparent */
+}
+
+.slider-arrow:hover {
+    opacity: 1;
+    background: #4CAF50; /* Theme color on hover */
+    color: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+}
+
+.slider-arrow.prev {
+    left: 20px;
+}
+
+.slider-arrow.next {
+    right: 20px;
+}
+
+/* Responsive adjustments (maintained original breakpoints) */
+@media (min-width: 768px) {
+    .memory-card {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+}
+
+@media (min-width: 992px) {
+    .memory-card {
+        flex: 0 0 33.333%;
+        max-width: 33.333%;
+    }
+    
+    .slider-arrow {
+        width: 50px; /* Slightly larger on desktop */
+        height: 50px;
+    }
+}
+
+/* Accessibility improvements */
+.slider-arrow:focus,
+.travel-btn:focus {
+    outline: 2px solid #4CAF50;
+    outline-offset: 2px;
+}
+
+/* Performance optimization */
+.memory-video video {
+    backface-visibility: hidden; /* Improve rendering performance */
+    transform: translateZ(0);
+}
+        /* Contact Section */
+        .contact {
+            background-color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact::before {
+            content: '';
+            position: absolute;
+            bottom: -100px;
+            right: -100px;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, var(--primary-light) 0%, transparent 70%);
+            z-index: 0;
+            opacity: 0.3;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-info h3 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: var(--darker-color);
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+        }
+
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background-color: var(--light-gray);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            flex-shrink: 0;
+            transition: var(--transition);
+        }
+
+        .contact-item:hover .contact-icon {
+            background-color: var(--primary-color);
+            color: white;
+            transform: rotate(10deg);
+        }
+
+        .contact-text h4 {
+            margin-bottom: 0.5rem;
+            color: var(--darker-color);
+        }
+
+        .contact-text p, .contact-text a {
+            color: var(--gray-color);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .contact-text a:hover {
+            color: var(--primary-color);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            width: 50px;
+            height: 50px;
+            background-color: var(--light-gray);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--dark-color);
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateY(-5px);
+        }
+
+        /* Contact Form */
+        .contact-form {
+            background-color: white;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow-lg);
+            transition: var(--transition);
+        }
+
+        .contact-form:hover {
+            box-shadow: var(--shadow-xl);
+        }
+
+        .form-group {
+            margin-bottom: 1.8rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+            color: var(--darker-color);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            border: 1px solid var(--light-gray);
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: var(--transition);
+            background-color: var(--light-color);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+            background-color: white;
+        }
+
+        textarea.form-control {
+            min-height: 180px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1.2rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        /* Map */
+        .map-container {
+            height: 300px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            margin-top: 3rem;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--darker-color);
+            color: white;
+            padding: 5rem 0 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .footer-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-logo i {
+            color: var(--accent-color);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--light-gray);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .footer-social {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-social a {
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .footer-social a:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            color: var(--gray-color);
+            margin-top: 2rem;
+            font-size: 0.9rem;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            text-decoration: none;
+            box-shadow: var(--shadow-lg);
+            z-index: 99;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-5px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .hero-text h1 {
+                font-size: 3rem;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .hero-content, 
+            .about-content,
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .hero-text {
+                order: 2;
+                text-align: center;
+                margin: 0 auto;
+            }
+
+            .hero-text p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-image {
+                order: 1;
+                margin: 0 auto;
+            }
+
+            .about-image {
+                order: 1;
+                max-width: 500px;
+                margin: 0 auto;
+            }
+
+            .about-text {
+                order: 2;
+                text-align: center;
+            }
+
+            .interests {
+                justify-content: center;
+            }
+
+            .contact-info {
+                order: 2;
+                text-align: center;
+            }
+
+            .contact-details {
+                align-items: center;
+            }
+
+            .contact-item {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .social-links {
+                justify-content: center;
+            }
+
+            .contact-form {
+                order: 1;
+                max-width: 600px;
+                margin: 0 auto;
+            }
+
+            .hero {
+                height: auto;
+                padding: 120px 0 80px;
+            }
+
+            .timeline::before {
+                left: 2rem;
+            }
+
+            .timeline-item:nth-child(odd),
+            .timeline-item:nth-child(even) {
+                padding-left: 4.5rem;
+                padding-right: 0;
+                text-align: left;
+            }
+
+            .timeline-dot {
+                left: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 80%;
+                height: 100vh;
+                background-color: white;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 2rem;
+                transition: var(--transition);
+                z-index: 1000;
+                box-shadow: var(--shadow-xl);
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .menu-btn {
+                display: block;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .btn-group {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn-outline {
+                margin-left: 0;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .container {
+                padding: 0 1.5rem;
+            }
+
+            section {
+                padding: 6rem 0;
+            }
+
+            .hero-text h1 {
+                font-size: 2.2rem;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .contact-form {
+                padding: 2rem;
+            }
+
+            .travel-gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Same CSS styles as before */
+.popup-box {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.popup-content {
+  background-color: #fff;
+  margin: 10% auto;
+  padding: 20px;
+  border-radius: 8px;
+  width: 80%;
+  max-width: 600px;
+  position: relative;
+}
+
+/* Non-scrollable on bigger screens */
+.popup-content {
+  max-height: none; /* No height limit */
+}
+
+/* Scrollable only on smaller screens */
+@media (max-width: 768px) {
+  .popup-content {
+    width: 90%;
+    margin: 5% auto;
+    max-height: 80%; /* Limit the height */
+    overflow-y: auto; /* Allow vertical scrolling on smaller screens */
+  }
+
+  .image-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .image-container img {
+    max-width: 100%;
+    margin: 5px;
+  }
+}
+
+.image-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.image-container img {
+  width: 100%;
+  max-width: 200px;
+  height: auto;
+  margin: 10px;
+}
+
+.close-btn {
+  font-size: 30px;
+  color: #333;
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 20px;
+}
+
+.travel-btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  margin: 5px;
+}
+
+.travel-btn:hover {
+  background-color: #45a049;
+}
+
+    </style>
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">
+                    <i class="fas fa-map-marked-alt"></i>
+                    MyJourney
+                </a>
+                <ul class="nav-links">
+                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="#about">About Me</a></li>
+                    <li><a href="#family">My Family</a></li>
+                    <li><a href="#travels">My Travels</a></li>
+                    <li><a href="#memories">Memories</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <button class="menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="floating-elements">
+            <div class="floating-element" style="width: 100px; height: 100px; top: 20%; left: 10%;"></div>
+            <div class="floating-element" style="width: 150px; height: 150px; top: 60%; left: 80%;"></div>
+            <div class="floating-element" style="width: 80px; height: 80px; top: 80%; left: 20%;"></div>
+            <div class="floating-element" style="width: 120px; height: 120px; top: 30%; left: 70%;"></div>
+        </div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text animate__animated animate__fadeInLeft">
+                    <h1>Hello, I'm <span>Jhon-Rick Meltran</span></h1>
+                    <p>Welcome to my personal journey through life, love, and adventure. Here I share my story, my wonderful family, and the beautiful places we've explored together around the world.</p>
+                    <div class="btn-group">
+                        <a href="#about" class="btn">My Story</a>
+                        <a href="#travels" class="btn btn-accent">See My Travels</a>
+                    </div>
+                </div>
+                <div class="hero-image animate__animated animate__fadeInRight">
+                    <div class="img-container">
+                        <img src="image/prifole.jpg" alt="Profile photo">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Me</h2>
+                <p>Get to know who I am, what I love, and what makes me tick</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>My Life Journey</h3>
+                    <p>Born and raised in Oriental Mindoro, Philippines, I’ve always been curious about how things work—especially when it comes to technology. My goal is to pursue a Bachelor of Science in Information Technology (BSIT) and turn my passion into a profession. What truly motivates me is the opportunity to use tech to solve real-world problems and improve lives. I believe the future belongs to those who innovate, and I’m excited to be part of that journey.</p>
+                    <p>What truly fulfills me is creating lasting memories with my loved ones while discovering new cultures and places. I believe life is about the adventures we have and the people we share them with.</p>
+                    
+                    <h3>My Passions</h3>
+                    <div class="interests">
+                        <span class="interest"><i class="fas fa-heart"></i> Family</span>
+                        <span class="interest"><i class="fas fa-plane"></i> Travel</span>
+                        <span class="interest"><i class="fas fa-camera"></i> Photography</span>
+                        <span class="interest"><i class="fas fa-gamepad"></i> Online Games</span>
+                        <span class="interest"><i class="fas fa-hiking"></i> Hiking</span>
+                        <span class="interest"><i class="fas fa-dumbbell"></i> Exercising</span>
+                        <span class="interest"><i class="fas fa-music"></i> Music</span>
+                        <span class="interest"><i class="fas fa-film"></i> Watching</span>
+                    </div>
+
+                    <div class="stats">
+                        <div class="stat-item">
+                            <div class="stat-number">30</div>
+                            <div class="stat-label">provinces in the Philippines</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">90+</div>
+                            <div class="stat-label">Family Trips</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">20K</div>
+                            <div class="stat-label">Photos Taken</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <video src="image/2024.mp4" controls autoplay muted loop alt="About me" class="about-video"></video>
+                </div>                
+            </div>
+
+            <div class="timeline">
+                <h3 style="text-align: center; margin: 5rem 0 3rem; font-size: 1.8rem; color: var(--darker-color);">My Life Timeline</h3>
+                
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">2003</span>
+                        <h3 class="timeline-title">Born in Oriental Mindoro, Philippines</h3>
+                        <p class="timeline-desc">Started my journey in this beautiful province surrounded by nature and culture.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">2012</span>
+                        <h3 class="timeline-title">Moved to Calamba, Laguna</h3>
+                        <p class="timeline-desc">Moved to Calamba, Laguna to continue elementary school.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">2016</span>
+                        <h3 class="timeline-title">Graduated Elementary School</h3>
+                        <p class="timeline-desc">Studied at Mayapa Elementary School in Calamba, Laguna.</p>
+                    </div>
+                </div>                          
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">2020</span>
+                        <h3 class="timeline-title">Graduated High School</h3>
+                        <p class="timeline-desc">Graduated from Asian Computer College in Mayapa, Calamba, Laguna with a focus on technology and IT foundations.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">2020</span>
+                        <h3 class="timeline-title">Graduated Senior High School</h3>
+                      <p class="timeline-desc">Graduated from Calamba Doctors College with a Senior High School diploma in the STEM track.</p> 
+                
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">Present</span>
+                        <h3 class="timeline-title">College Studies</h3>
+                        <p class="timeline-desc">Currently studying Information Technology at LSPU Los Baños Campus.</p>
+                    </div>
+                </div>                
+    </section>
+
+    <!-- Family Section -->
+    <section class="family" id="family">
+        <div class="container">
+            <div class="section-title">
+                <h2>My Family</h2>
+                <p>The most important people in my life who make every day special</p>
+            </div>
+            <div class="family-members">
+                <!-- Family Member 1 -->
+                <div class="member-card">
+                    <div class="member-image">
+                        <img src="image/12.jpg" alt="Spouse">
+                    </div>
+                    <div class="member-info">
+                        <h3>Patricia Anne Meltran</h3>
+                        <span class="member-relation">Sister (Age 23)</span>
+                        <p class="member-desc">She is my sister and is older than me. She graduated with a degree in Computer Science from Asia Pacific College.</p>
+                        <div class="member-social">
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-pinterest"></i></a>
+                        </div>
+                    </div>                                        
+                </div>
+                <!-- Family Member 2 -->
+                <div class="member-card">
+                    <div class="member-image">
+                        <img src="image/22.jpg" alt="Child 1">
+                    </div>
+                    <div class="member-info">
+                        <h3>Janette Meltran</h3>
+                        <span class="member-relation">Mother</span>
+                        <p class="member-desc">The heart of our home. Janette is known for her warmth, strength, and unwavering support. She loves cooking for the family, tending the garden, and capturing special moments with her camera.</p>
+                        <div class="member-social">
+                            <a href="#"><i class="fas fa-camera"></i></a>
+                            <a href="#"><i class="fas fa-paint-brush"></i></a>
+                        </div>
+                    </div>                    
+                </div>
+                <!-- Family Member 3 -->
+                <div class="member-card">
+                    <div class="member-image">
+                        <img src="image/33.jpg" alt="Child 2">
+                    </div>
+                    <div class="member-info">
+                        <h3>Roderic Meltran</h3>
+                        <span class="member-relation">Father</span>
+                        <p class="member-desc">Roderic Meltran is a father who enjoys spending time with his family and being outdoors. He has a practical approach to life and values simplicity.</p>
+                        <div class="member-social">
+                            <a href="#"><i class="fas fa-truck"></i></a>
+                            <a href="#"><i class="fas fa-paw"></i></a>
+                        </div>
+                    </div>                                       
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Travels Section -->
+    <section class="travels" id="travels">
+        <div class="container">
+            <div class="section-title">
+                <h2>My Travels</h2>
+                <p>Exploring the world one adventure at a time</p>
+            </div>
+            <div class="travel-gallery">
+                <!-- Travel 1 -->
+                <div class="travel-card">
+                    <div class="travel-image">
+                        <img src="image/FALLS.jpg" alt="Bali">
+                    </div>
+                    <div class="travel-info">
+                        <span class="travel-date">Jan, 2 2025</span>
+                        <h3>Antipolo City</h3>
+                        <p>Hinulugang Taktak is a scenic waterfall and park in Antipolo, great for nature walks and picnics.</p>
+                        <div class="travel-meta">
+                            <span><i class="fas fa-calendar-alt"></i> 2 days</span>
+                            <span><i class="fas fa-user-friends"></i> Family</span>
+                        </div>
+                        <a href="#" class="travel-btn" id="viewMoreBtn1">View Photos</a>
+                    </div>
+                </div>
+                <!-- Travel 2 -->
+                <div class="travel-card">
+                    <div class="travel-image">
+                        <img src="image/moa.jpg" alt="Paris">
+                    </div>
+                    <div class="travel-info">
+                        <span class="travel-date">Dec 18, 2024</span>
+                        <h3>Pasay City</h3>
+                        <p>SM Mall of Asia is a popular mall in Pasay with shopping, dining, entertainment, and scenic bay views.</p>
+                        <div class="travel-meta">
+                            <span><i class="fas fa-calendar-alt"></i> 3 days</span>
+                            <span><i class="fas fa-heart"></i> Family</span>
+                        </div>
+                        <a href="#" class="travel-btn" id="viewMoreBtn2">View Photos</a>
+                    </div>
+                </div>
+                <!-- Travel 3 -->
+                <div class="travel-card">
+                    <div class="travel-image">
+                        <img src="image/venice.jpg" alt="Japan">
+                    </div>
+                    <div class="travel-info">
+                        <span class="travel-date">Oct 13, 2024</span>
+                        <h3>Taguig City</h3>
+                        <p>Celebrate my birthday at the Venice Grand Canal, Taguig’s scenic spot with gondola rides and dining.</p>
+                        <div class="travel-meta">
+                            <span><i class="fas fa-calendar-alt"></i> 4 days</span>
+                            <span><i class="fas fa-user-friends"></i> Family</span>
+                        </div>
+                        <a href="#" class="travel-btn" id="viewMoreBtn3">View Photos</a>
+                    </div>
+                </div>
+                <!-- Travel 4 -->
+                <div class="travel-card">
+                    <div class="travel-image">
+                        <img src="image/laiya.jpg" alt="New Zealand">
+                    </div>
+                    <div class="travel-info">
+                        <span class="travel-date">Aug 31, 2024</span>
+                        <h3>San Juan, Batangas</h3>
+                        <p>Laiya offers white-sand beaches and fun water activities, perfect for a quick beach escape.</p>                        
+                        <div class="travel-meta">
+                            <span><i class="fas fa-calendar-alt"></i> 3 days</span>
+                            <span><i class="fas fa-user-friends"></i> Family</span>
+                        </div>
+                        <a href="#" class="travel-btn" id="viewMoreBtn4">View Photos</a>
+                    </div>
+                </div>
+                <!-- Travel 5 -->
+                <div class="travel-card">
+                    <div class="travel-image">
+                        <img src="image/intra.jpg" alt="Iceland">
+                    </div>
+                    <div class="travel-info">
+                        <span class="travel-date">Jan 25, 2024</span>
+                        <h3>Intramuros, Manila</h3>
+                        <p>Fort Santiago is a historic site in Intramuros, known for its preserved ruins, gardens, and connection to José Rizal.</p>
+                        <div class="travel-meta">
+                            <span><i class="fas fa-calendar-alt"></i> 1 day</span>
+                            <span><i class="fas fa-user-friends"></i> Cousins</span>
+                        </div>
+                        <a href="#" class="travel-btn" id="viewMoreBtn5">View Photos</a>
+                    </div>
+                </div>
+                <!-- Travel 6 -->
+                <div class="travel-card">
+                    <div class="travel-image">
+                        <img src="image/pili.jpg" alt="Italy">
+                    </div>
+                    <div class="travel-info">
+                        <span class="travel-date">May 26, 2024</span>
+                        <h3>Pili, Oriental Mindoro</h3>
+                        <p>White Beach in Pili offers clear waters, soft sand, and a laid-back vibe perfect for relaxing getaways.</p>
+                        <div class="travel-meta">
+                            <span><i class="fas fa-calendar-alt"></i> 4 weeks</span>
+                            <span><i class="fas fa-home"></i> Where I was born and raised</span>
+                        </div>
+                        <a href="#" class="travel-btn" id="viewMoreBtn6">View Photos</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+<!-- Popup Modals -->
+<div id="popupBox1" class="popup-box">
+    <div class="popup-content">
+      <span class="close-btn" id="closeBtn1">&times;</span>
+      <div class="image-container">
+        <img src="image/1a.jpg" alt="Image 1a">
+        <img src="image/2a.jpg" alt="Image 1b">
+        <img src="image/3a.jpg" alt="Image 1c">
+        <img src="image/4a.jpg" alt="Image 1d">
+      </div>
+    </div>
+  </div>
+  
+<div id="popupBox2" class="popup-box">
+  <div class="popup-content">
+    <span class="close-btn" id="closeBtn2">&times;</span>
+    <div class="image-container">
+      <img src="image/2b.jpg" alt="Image 2a">
+      <img src="image/2c.jpg" alt="Image 2b">
+      <img src="image/2d.jpg" alt="Image 2b">
+      <img src="image/2e.jpg" alt="Image 2b">
+    </div>
+  </div>
+</div>
+
+<div id="popupBox3" class="popup-box">
+  <div class="popup-content">
+    <span class="close-btn" id="closeBtn3">&times;</span>
+    <div class="image-container">
+      <img src="image/3b.jpg" alt="Image 3a">
+      <img src="image/3c.jpg" alt="Image 3b">
+      <img src="image/3d.jpg" alt="Image 3b">
+      <img src="image/3e.jpg" alt="Image 3b">
+    </div>
+  </div>
+</div>
+
+<div id="popupBox4" class="popup-box">
+  <div class="popup-content">
+    <span class="close-btn" id="closeBtn4">&times;</span>
+    <div class="image-container">
+      <img src="image/4b.jpg" alt="Image 4a">
+      <img src="image/4c.jpg" alt="Image 4b">
+      <img src="image/4d.jpg" alt="Image 4a">
+      <img src="image/4e.jpg" alt="Image 4b">
+    </div>
+  </div>
+</div>
+
+<div id="popupBox5" class="popup-box">
+  <div class="popup-content">
+    <span class="close-btn" id="closeBtn5">&times;</span>
+    <div class="image-container">
+      <img src="image/5a.jpg" alt="Image 5a">
+      <img src="image/5b.jpg" alt="Image 5b">
+      <img src="image/5c.jpg" alt="Image 5a">
+      <img src="image/5d.jpg" alt="Image 5b">
+    </div>
+  </div>
+</div>
+
+<div id="popupBox6" class="popup-box">
+  <div class="popup-content">
+    <span class="close-btn" id="closeBtn6">&times;</span>
+    <div class="image-container">
+      <img src="image/6a.jpg" alt="Image 6a">
+      <img src="image/6b.jpg" alt="Image 6b">
+      <img src="image/6c.jpg" alt="Image 6a">
+      <img src="image/6d.jpg" alt="Image 6b">
+    </div>
+  </div>
+</div>
+
+    <!-- Memories Section -->
+    <section class="memories" id="memories">
+        <div class="container">
+            <div class="section-title">
+                <h2>Special Memories</h2>
+                <p>Cherished moments from our family adventures</p>
+            </div>
+            <div class="memory-slider">
+                <div class="memory-track">
+                    <!-- Memory 1 -->
+                    <div class="memory-card">
+                        <div class="memory-video">
+                            <video controls>
+                                <source src="image/vid1.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <div class="memory-info">
+                            <span class="memory-date">Aug 31, 2024</span>
+                            <h3 class="memory-title">Banana Boat</h3>
+                            <p class="memory-desc">My first time experiencing the thrilling banana boat ride at Laiya Resort, San Juan, Batangas, was unforgettable. The adrenaline rush and the stunning ocean views made it an amazing adventure with my family!</p>
+                            <a href="#" class="travel-btn">View More</a>
+                        </div>
+                    </div>
+                    <!-- Memory 2 -->
+                    <div class="memory-card">
+                        <div class="memory-video">
+                            <video controls>
+                                <source src="image/chef.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <div class="memory-info">
+                            <span class="memory-date">Aug 28, 2024</span>
+                            <h3 class="memory-title">Teppanya at SM by the Bay</h3>
+                            <p class="memory-desc">Enjoyed a memorable dining experience at Teppanya, SM by the Bay, where delicious teppanyaki dishes are grilled right in front of you. The vibrant atmosphere and stunning bay view made it a perfect spot for a meal with friends and family.</p>
+                            <a href="#" class="travel-btn">View More</a>
+                        </div>
+                    </div>
+                    <!-- Memory 3 -->
+                    <div class="memory-card">
+                        <div class="memory-video">
+                            <video controls>
+                                <source src="image/ih.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <div class="memory-info">
+                            <span class="memory-date">Aug 31, 2024</span>
+                            <h3 class="memory-title">Island Hopping in San Juan Batangas</h3>
+                            <p class="memory-desc">Explored the beautiful islands of San Juan, Batangas, where crystal-clear waters, pristine beaches, and vibrant marine life made for an unforgettable island hopping adventure.</p>
+                            <a href="#" class="travel-btn">View More</a>
+                        </div>
+                    </div>
+                    <!-- Memory 4 -->
+                    <div class="memory-card">
+                        <div class="memory-video">
+                            <video controls>
+                                <source src="image/adv.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <div class="memory-info">
+                            <span class="memory-date">Jan 2, 2025</span>
+                            <h3 class="memory-title">Hiking Adventure in Tanay Rizal</h3>
+                            <p class="memory-desc">An unforgettable trek through the lush mountains of Tanay, filled with scenic views, fresh air, and the thrill of conquering steep trails with friends.</p>
+                            <a href="#" class="travel-btn">View More</a>
+                        </div>
+                    </div>
+                    <!-- Memory 5 -->
+                   <div class="memory-card">
+                        <div class="memory-video">
+                            <video controls>
+                                <source src="image/bowling.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <div class="memory-info">
+                            <span class="memory-date">Aug 31, 2024</span>
+                            <h3 class="memory-title">Bowling At SM Mall of Asia</h3>
+                            <p class="memory-desc">Had an amazing time during my first bowling experience at SM Mall of Asia. The fun, friendly competition, and the lively atmosphere made it a perfect outing with friends.</p>
+                            <a href="#" class="travel-btn">View More</a>
+                        </div>
+                    </div>
+                    <div class="memory-card">
+                        <div class="memory-video">
+                            <video controls>
+                                <source src="image/cafe.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <div class="memory-info">
+                            <span class="memory-date">jan 2, 2025</span>
+                            <h3 class="memory-title">Kape-Hingahan in Taytay, Rizal</h3>
+                            <p class="memory-desc">A peaceful coffee spot in Taytay with relaxing views, fresh air, and great brews — perfect for unwinding.</p>
+                            <a href="#" class="travel-btn">View More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="slider-nav">
+                    <div class="slider-dot active"></div>
+                    <div class="slider-dot"></div>
+                    <div class="slider-dot"></div>
+                    <div class="slider-dot"></div>
+                    <div class="slider-dot"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Get In Touch</h2>
+                <p>I'd love to hear from you! Send me a message about travel tips, family stories, or just to say hello</p>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Let's Connect!</h3>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Email</h4>
+                                <a href="mailto:hello@alexjohnson.com">meltranjhonrick13@gmial.com</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Phone</h4>
+                                <a href="tel:+14155550123">09948140980</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Location</h4>
+                                <p>Mayapa, Calamba Laguna</p>
+                            </div>
+                        </div>
+                    </div>
+                    <h3 style="margin-top: 3rem;">Follow Our Adventures</h3>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/jhnrck.m/"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/JHNRCKMELTRAN"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://ph.pinterest.com/jhonrickmeltran/"><i class="fab fa-pinterest"></i></a>
+                    </div>
+
+                    <div class="map-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d7735.713749994693!2d121.1252091!3d14.20315750000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sph!4v1746758362567!5m2!1sen!2sph" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" name="name" id="name" class="form-control" placeholder="Enter your name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" name="email" id="email" class="form-control" placeholder="Enter your email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" name="subject" id="subject" class="form-control" placeholder="What would you like to talk about?">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Your Message</label>
+                            <textarea name="message" id="message" class="form-control" placeholder="Share your thoughts..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn submit-btn">Send Message</button>
+                    </form>
+                </div>                           
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <a href="#" class="footer-logo">
+                    <i class="fas fa-map-marked-alt"></i>
+                    MyJourney
+                </a>
+                <div class="footer-links">
+                    <a href="#home">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#family">Family</a>
+                    <a href="#travels">Travels</a>
+                    <a href="#memories">Memories</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <div class="footer-social">
+                    <a href="https://www.instagram.com/jhnrck.m/"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/JHNRCKMELTRAN"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://ph.pinterest.com/jhonrickmeltran/"><i class="fab fa-pinterest"></i></a>
+                </div>
+                <p class="copyright">© 2023 My Journey. All rights reserved. <br>Created with love and countless memories</p>
+            </div>
+        </div>
+    </footer>
+    <script>
+        // Preloader
+        window.addEventListener('load', function() {
+            const preloader = document.querySelector('.preloader');
+            preloader.classList.add('fade-out');
+            setTimeout(() => {
+                preloader.style.display = 'none';
+            }, 500);
+        });
+
+        // Mobile menu toggle
+        const menuBtn = document.querySelector('.menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+
+        menuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            menuBtn.innerHTML = navLinks.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            const backToTop = document.querySelector('.back-to-top');
+            
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+                backToTop.classList.add('visible');
+            } else {
+                header.classList.remove('scrolled');
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Set active nav link based on scroll position
+        const sections = document.querySelectorAll('section');
+        const navItems = document.querySelectorAll('.nav-links a');
+
+        window.addEventListener('scroll', function() {
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('href') === `#${current}`) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // Memory slider
+        document.addEventListener('DOMContentLoaded', function() {
+        const track = document.querySelector('.memory-track');
+        const cards = document.querySelectorAll('.memory-card');
+        const dots = document.querySelectorAll('.slider-dot');
+        const prevBtn = document.createElement('div');
+        const nextBtn = document.createElement('div');
+        
+        // Create navigation arrows
+        prevBtn.className = 'slider-arrow prev';
+        prevBtn.innerHTML = '❮';
+        nextBtn.className = 'slider-arrow next';
+        nextBtn.innerHTML = '❯';
+        document.querySelector('.memory-slider').appendChild(prevBtn);
+        document.querySelector('.memory-slider').appendChild(nextBtn);
+        
+        let currentIndex = 0;
+        const cardWidth = cards[0].offsetWidth;
+        const totalCards = cards.length;
+        
+        // Pause all videos except the current one
+        function manageVideos() {
+            const videos = document.querySelectorAll('.memory-video video');
+            videos.forEach((video, index) => {
+                if (index === currentIndex) {
+                    // Optional: play the current video automatically
+                    // video.play();
+                } else {
+                    video.pause();
+                    video.currentTime = 0;
+                }
+            });
+        }
+        
+        // Update slider position
+        function updateSlider() {
+            track.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+            
+            // Update dots
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentIndex);
+            });
+            
+            // Manage videos
+            manageVideos();
+        }
+        
+        // Next slide
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % totalCards;
+            updateSlider();
+        }
+        
+        // Previous slide
+        function prevSlide() {
+            currentIndex = (currentIndex - 1 + totalCards) % totalCards;
+            updateSlider();
+        }
+        
+        // Dot navigation
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                currentIndex = index;
+                updateSlider();
+            });
+        });
+        
+        // Arrow navigation
+        nextBtn.addEventListener('click', nextSlide);
+        prevBtn.addEventListener('click', prevSlide);
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') nextSlide();
+            if (e.key === 'ArrowLeft') prevSlide();
+        });
+        
+        // Auto-slide (optional)
+        // let autoSlide = setInterval(nextSlide, 5000);
+        
+        // Pause auto-slide on hover
+        const slider = document.querySelector('.memory-slider');
+        slider.addEventListener('mouseenter', () => {
+            // clearInterval(autoSlide);
+        });
+        
+        slider.addEventListener('mouseleave', () => {
+            // autoSlide = setInterval(nextSlide, 5000);
+        });
+        
+        // Initialize
+        updateSlider();
+        
+        // Responsive adjustments
+        window.addEventListener('resize', () => {
+            const newCardWidth = cards[0].offsetWidth;
+            if (newCardWidth !== cardWidth) {
+                track.style.transform = `translateX(-${currentIndex * newCardWidth}px)`;
+            }
+        });
+    });
+        // Animate elements when scrolling
+        const animateOnScroll = function() {
+            const elements = document.querySelectorAll('.hero-text, .hero-image, .about-image, .about-text, .section-title');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if (elementPosition < screenPosition) {
+                    element.classList.add('animate__animated', 'animate__fadeInUp');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', animateOnScroll);
+        // Trigger once on load in case elements are already in view
+        animateOnScroll();
+    </script>
+
+    <script>
+        // Function to open a specific popup
+function openPopup(popupId) {
+  document.getElementById(popupId).style.display = 'flex';
+}
+
+// Function to close a specific popup
+function closePopup(popupId) {
+  document.getElementById(popupId).style.display = 'none';
+}
+
+// Event listeners for "View More" buttons
+document.getElementById('viewMoreBtn1').addEventListener('click', (e) => {
+  e.preventDefault();
+  openPopup('popupBox1');
+});
+document.getElementById('viewMoreBtn2').addEventListener('click', (e) => {
+  e.preventDefault();
+  openPopup('popupBox2');
+});
+document.getElementById('viewMoreBtn3').addEventListener('click', (e) => {
+  e.preventDefault();
+  openPopup('popupBox3');
+});
+document.getElementById('viewMoreBtn4').addEventListener('click', (e) => {
+  e.preventDefault();
+  openPopup('popupBox4');
+});
+document.getElementById('viewMoreBtn5').addEventListener('click', (e) => {
+  e.preventDefault();
+  openPopup('popupBox5');
+});
+document.getElementById('viewMoreBtn6').addEventListener('click', (e) => {
+  e.preventDefault();
+  openPopup('popupBox6');
+});
+
+// Event listeners for close buttons
+document.getElementById('closeBtn1').addEventListener('click', () => closePopup('popupBox1'));
+document.getElementById('closeBtn2').addEventListener('click', () => closePopup('popupBox2'));
+document.getElementById('closeBtn3').addEventListener('click', () => closePopup('popupBox3'));
+document.getElementById('closeBtn4').addEventListener('click', () => closePopup('popupBox4'));
+document.getElementById('closeBtn5').addEventListener('click', () => closePopup('popupBox5'));
+document.getElementById('closeBtn6').addEventListener('click', () => closePopup('popupBox6'));
+
+// Close the popup when clicking outside the popup content
+window.addEventListener('click', (e) => {
+  if (e.target.classList.contains('popup-box')) {
+    e.target.style.display = 'none';
+  }
+});
+
+// Get the modal and the close button
+var modal = document.getElementById("popupBox1");
+var closeBtn = document.getElementById("closeBtn1");
+
+// Function to close the modal
+closeBtn.onclick = function() {
+  modal.style.display = "none";
+}
+
+// Function to open the modal (you can call this function on some event, like a button click)
+function openModal() {
+  modal.style.display = "flex";
+}
+
+// Function to close modal when clicking outside of the popup content
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+    </script>
+
+<script>
+document.getElementById("contactForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    var formData = new FormData(this);
+    console.log([...formData]); // Debugging to check data
+
+    fetch("send_email.php", {
+        method: "POST",
+        body: formData
+    })
+    .then(response => response.text())
+    .then(result => {
+        console.log("Server response:", result); // Check result in console
+        alert(result);
+        document.getElementById("contactForm").reset();
+    })
+    .catch(error => {
+        console.error("Error during fetch:", error);
+        alert("There was an error submitting your message.");
+    });
+});
+    </script>
+</body>
+</html>
